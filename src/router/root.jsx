@@ -1,6 +1,8 @@
-import { Home, MainHome } from "../components/home/home";
+import Home from "../components/home/home";
+import MainHome from "../components/home/mainhome/mainhome";
 import ErrorPage from "../components/errorpage/errorpage";
-import { MainShop, Cart } from "../components/shop/shop";
+import MainShop from "../components/home/shop/shop";
+import Cart from "../components/home/shop/cart/cart";
 
 const route = [
   {
@@ -17,7 +19,7 @@ const route = [
         element: <MainShop />,
       },
       {
-        path: "cart",
+        path: ":name",
         element: <Cart />,
       },
     ],
