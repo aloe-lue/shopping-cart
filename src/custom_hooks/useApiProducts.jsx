@@ -9,7 +9,7 @@ const useApiProductsInfo = () => {
     const fetchProducts = async () => {
       try {
         const request = await fetch(
-          "https://fakestoreapi.com/products?limit=5"
+          "https://fakestoreapi.com/products?limit=30"
         );
         if (request.status >= 400) {
           throw new Error(`Server error: ${request.statusText}`);
