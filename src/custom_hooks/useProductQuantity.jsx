@@ -1,34 +1,45 @@
 import { useState } from "react";
 
-const useProductQuantity = ({ qty = 0 }) => {
-  const [quantity, setQuantity] = useState(qty);
+const useProductQuantity = () => {
+  const [prodQuantity, setProdQuantity] = useState({});
 
-  const setQuantityInput = (e) => {
-    setQuantity(e.target.value);
+  const handleProdQuantityInput = (fieldName) => (event) => {
+    const { value } = event.target;
+    setProdQuantity((quantity) => ({
+      ...quantity,
+      [fieldName]: value,
+    }));
   };
 
-  const setQuantityMinus = () => {
-    setQuantity((value) => {
-      if (value >= 1) {
-        return value - 1;
-      }
-      return value;
-    });
+  const handleProdQuantityMinus = (fieldName) => () => {
+    const lestUn = prodQuantity[fieldName];
+    setProdQuantity((quantity) => ({
+      ...quantity,
+      [fieldName]:
+        typeof lestUn === "undefined" ? 0 : lestUn >= 1 ? lestUn - 1 : 0,
+    }));
   };
-  const setQuantityPlus = () => {
-    if (typeof quantity === "string") {
-      setQuantity(Number(quantity) + 1);
-    }
-    if (typeof quantity === "number") {
-      setQuantity(quantity + 1);
-    }
+
+  const handleProdQuantityPlus = (fieldName) => () => {
+    const lestUn = prodQuantity[fieldName];
+    setProdQuantity((quantity) => ({
+      ...quantity,
+      [fieldName]:
+        typeof lestUn === "undefined"
+          ? 0 + 1
+          : typeof lestUn === "string"
+          ? Number(lestUn) + 1
+          : typeof lestUn === "number"
+          ? lestUn + 1
+          : 0,
+    }));
   };
 
   return {
-    quantity,
-    input: setQuantityInput,
-    minus: setQuantityMinus,
-    plus: setQuantityPlus,
+    prodQuantity,
+    handleProdQuantityInput,
+    handleProdQuantityMinus,
+    handleProdQuantityPlus,
   };
 };
 
