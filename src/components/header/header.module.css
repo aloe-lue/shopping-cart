@@ -1,0 +1,48 @@
+.headerLayout {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.headNav {
+  display: flex;
+  gap: 1rem;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+}
+
+.headLink {
+  composes: navContent;
+  gap: 0.25rem;
+  text-decoration: none;
+}
+
+.logo {
+  composes: headLink;
+}
+.logoName {
+  font-size: clamp(16px, 5vw, 32px);
+  font-family: Arial, Helvetica, sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  color: #515151;
+}
+.cartNum {
+  border: 1px solid crimson;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: crimson;
+  color: white;
+  font-family: monospace;
+}
